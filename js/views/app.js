@@ -22,7 +22,7 @@ app.AppView = Backbone.View.extend({
 		this.listenTo(app.Todos, 'reset', this.addAll);
 
 		this.listenTo(app.Todos, 'change:completed', this.filterOne);
-		this.listenTo(app.Todos, 'filer', this.filterAll);
+		this.listenTo(app.Todos, 'filtser', this.filterAll);
 		this.listenTo(app.Todos, 'all', this.render);
 
 		app.Todos.fetch();
@@ -55,7 +55,7 @@ app.AppView = Backbone.View.extend({
 
 	addOne: function(todo){
 		var view = new app.TodoView({ model: todo });
-		$('#todo-list').append view.render().el );
+		$('#todo-list').append( view.render().el );
 	},
 
 	addAll: function(){
@@ -74,13 +74,13 @@ app.AppView = Backbone.View.extend({
 	newAttributes: function() {
 		return {
 			title: this.$input.val().trim(),
-			order: a..Todos.nextOrder(),
+			order: app.Todos.nextOrder(),
 			completed: false
 		};
 	},
 
 	createOnEnter: function( event ) {
-		if ( even.which !== ENTER_KEY || !this.$input.val().trim() ) {
+		if ( event.which !== ENTER_KEY || !this.$input.val().trim() ) {
 			return;
 		}
 
